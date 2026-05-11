@@ -1,0 +1,51 @@
+let snowballX;
+let snowballY;
+let windSpeed;
+let fallSpeed=4;
+let x = 400;
+let y = 400;
+let xSpeed = 4;
+let ySpeed = 6;
+let value = 5;
+let xCoordinates = [100, 200, 300];
+let myEarth;
+
+function preload (){
+myEarth = loadImage("assets/earth.jpg");
+}
+
+function setup() {
+  createCanvas(480, 480, WEBGL);
+  frameRate(30);
+  snowballX = random(0,480);
+  snowballY = -5;
+  circle(snowballX,snowballY,20);
+  frameRate(200); 
+}
+
+function draw() {
+  background(0);
+  image(myEarth, 50, 50);
+  circle(snowballX,snowballY,20);
+  windSpeed = 0;
+  snowballX = snowballX + windSpeed;
+  normalMaterial();
+  rotateX(frameCount * 0.02);
+  rotateY(frameCount * 0.03);
+  torus(width * 0.2, width * 0.1, 64, 64);
+  function mouseClicked() { 
+  if (value === 5) {
+  value = 230;
+  } else {
+  value = 5;
+  circle(xCoordinates[0], 200, 80);
+  circle(xCoordinates[1], 200, 80);
+  circle(xCoordinates[2], 200, 80);
+  console.log(xCoordinates);
+  for (i=0; i<3; i++){
+  circle(xCoordinates[i], 200, 80);
+  xCoordinates[i]+=5;
+}
+} 
+}
+}
